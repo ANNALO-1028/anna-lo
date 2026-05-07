@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anna 欸娜｜自我成長 × 兩性關係 × 個人品牌</title>
+  <meta name="description" content="從戀愛、自我到個人品牌，陪你把主導權拿回來">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'LihsiAnti';
+      src: url('file:///Users/luoweishan/Library/Fonts/lihsianti-proportional.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    :root {
+      --bg:     #F4F0EC;
+      --bg2:    #E5DDD5;
+      --muted:  #B8A99A;
+      --accent: #C49898;
+      --text:   #5C4F49;
+      --border: rgba(92,79,73,0.12);
+      --shadow-soft:  0 4px 12px rgba(92,79,73,0.08);
+      --shadow-hover: 0 8px 24px rgba(92,79,73,0.14);
+      --transition: 250ms cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    h1, h2, h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* ── Nav ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      padding: 0 1rem;
+    }
+    .site-nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 10px rgba(92,79,73,0.06);
+    }
+    .nav-inner {
+      max-width: 600px; margin: 0 auto;
+      height: 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text); text-decoration: none; white-space: nowrap;
+    }
+    .nav-links { display: none; }
+    @media (min-width: 600px) {
+      .nav-links {
+        display: flex; list-style: none; gap: 1.25rem;
+      }
+      .nav-links a {
+        font-size: 0.8rem; color: var(--muted);
+        text-decoration: none; transition: color var(--transition);
+      }
+      .nav-links a:hover { color: var(--text); }
+    }
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      padding: 0.35rem 0.85rem; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap;
+      transition: opacity var(--transition);
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── Layout ── */
+    .container { max-width: 480px; margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: 2.5rem 0; }
+
+    .section-heading {
+      font-size: 1.25rem;
+      color: var(--text); margin-bottom: 0.4rem;
+    }
+    .section-divider {
+      width: 24px; height: 2px;
+      background: var(--accent);
+      margin: 0.5rem 0 1.25rem; border-radius: 2px;
+    }
+
+    /* ── Hero ── */
+    #hero { padding: 3rem 0 2.5rem; text-align: center; }
+    #hero h1 { font-size: clamp(1.4rem, 5vw, 1.9rem); margin-bottom: 0.6rem; }
+    #hero .subtitle {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.82rem; color: var(--muted);
+      margin-bottom: 1.5rem; letter-spacing: 0.5px;
+    }
+
+    /* CTA Buttons */
+    .cta-group {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+      background: var(--accent); color: #fff;
+      padding: 0.6rem 0.5rem; border-radius: 8px;
+      font-weight: 600; text-decoration: none;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-soft); font-size: 0.78rem;
+      text-align: center; line-height: 1.3;
+    }
+    .btn-primary:hover { box-shadow: var(--shadow-hover); opacity: 0.92; }
+    .btn-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+      background: transparent; color: var(--text);
+      padding: 0.6rem 0.5rem; border-radius: 8px;
+      font-weight: 600; text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: all var(--transition); font-size: 0.78rem;
+      text-align: center; line-height: 1.3;
+    }
+    .btn-secondary:hover { background: var(--bg2); border-color: var(--muted); }
+    .btn-outline {
+      display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+      background: var(--bg2); color: var(--text);
+      padding: 0.6rem 0.5rem; border-radius: 8px;
+      font-weight: 600; text-decoration: none;
+      transition: all var(--transition); font-size: 0.78rem;
+      text-align: center; line-height: 1.3;
+    }
+    .btn-outline:hover { background: var(--muted); color: #fff; }
+
+    /* ── Countdown ── */
+    .countdown-wrapper {
+      background: var(--bg2); border-radius: 10px;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      display: inline-block; width: 100%;
+    }
+    .countdown-label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 1px; margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+    #countdown-big {
+      display: flex; gap: 6px; justify-content: center;
+      font-variant-numeric: tabular-nums;
+    }
+    #countdown-big .unit {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 8px 10px; border-radius: 6px;
+      flex: 1; text-align: center;
+    }
+    #countdown-big .num {
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--accent); display: block;
+    }
+    #countdown-big .label {
+      font-size: 0.6rem; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--muted); display: block;
+    }
+
+    /* ── Group Buys ── */
+    #groupbuys { background: var(--bg2); }
+    .groupbuy-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+    .groupbuy-card {
+      background: var(--bg);
+      border-radius: 10px; padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all var(--transition);
+    }
+    .groupbuy-card.active { border-color: var(--accent); }
+    .groupbuy-left { display: flex; align-items: center; gap: 0.6rem; }
+    .groupbuy-badge {
+      font-size: 0.62rem; font-weight: 700;
+      font-family: 'Noto Sans TC', sans-serif;
+      letter-spacing: 0.5px; padding: 0.15rem 0;
+      border-radius: 4px; white-space: nowrap;
+      width: 4.2rem; text-align: center; flex-shrink: 0; display: inline-block;
+    }
+    .badge-active   { background: var(--accent); color: #fff; }
+    .badge-upcoming { background: var(--muted);  color: #fff; }
+    .badge-ended    { background: transparent; color: var(--muted); border: 1px solid var(--muted); }
+    .groupbuy-name {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem; font-weight: 700; color: var(--text);
+    }
+    .groupbuy-dates { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+    .groupbuy-note {
+      font-size: 0.78rem; color: var(--muted);
+      margin-top: 1rem; text-align: center;
+    }
+    .groupbuy-note a { color: var(--accent); text-decoration: none; }
+
+    /* ── YT Thumbnails ── */
+    #videos { background: var(--bg); }
+    .video-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .video-card {
+      display: block; text-decoration: none;
+      border-radius: 10px; overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative; background: #000;
+    }
+    .video-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .video-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+    }
+    .video-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.18);
+      transition: background var(--transition);
+    }
+    .video-card:hover .video-play { background: rgba(0,0,0,0.28); }
+    .play-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-icon svg { width: 18px; height: 18px; fill: var(--accent); margin-left: 2px; }
+
+    /* ── Services ── */
+    #services { background: var(--bg2); }
+    .service-card {
+      background: var(--bg); border-radius: 12px;
+      padding: 1.25rem; border: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    .service-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.82rem; font-weight: 700; margin-bottom: 0.4rem;
+    }
+    .service-desc { font-family: 'Noto Sans TC', sans-serif; font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+
+    /* ── Collab ── */
+    #collab { background: var(--bg); }
+    .collab-box {
+      background: var(--bg2); border-radius: 12px;
+      padding: 1.5rem; text-align: left;
+      margin-top: 1rem; border: 1px solid var(--border);
+    }
+    .collab-box p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; }
+
+    /* ── About (bottom) ── */
+    #about { background: var(--bg2); }
+    #about p { font-size: 0.82rem; margin-bottom: 0.75rem; opacity: 0.85; }
+
+    /* ── Sticky countdown ── */
+    #countdown-sticky {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--text); color: #fff;
+      padding: 0.6rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform var(--transition);
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    }
+    #countdown-sticky.visible { transform: translateY(0); }
+    #countdown-sticky .sticky-text { font-size: 0.75rem; }
+    #countdown-sticky .sticky-label { opacity: 0.65; font-size: 0.7rem; display: block; }
+    #countdown-sticky .time { font-weight: 700; font-size: 0.85rem; }
+    #countdown-sticky .cta-compact {
+      background: var(--accent); color: #fff;
+      padding: 0.4rem 1rem; border-radius: 6px;
+      font-weight: 600; text-decoration: none;
+      white-space: nowrap; font-size: 0.8rem;
+      transition: opacity var(--transition); flex-shrink: 0;
+    }
+    #countdown-sticky .cta-compact:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 1.75rem 1.25rem; text-align: center;
+      font-size: 0.78rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">Anna欸娜</a>
+      <ul class="nav-links">
+        <li><a href="#groupbuys">團購</a></li>
+        <li><a href="#videos">影片</a></li>
+        <li><a href="#services">陪跑</a></li>
+        <li><a href="#collab">合作</a></li>
+      </ul>
+      <a class="nav-cta" href="https://www.instagram.com/annalo831028/" target="_blank" rel="noopener">追蹤 IG</a>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <h1>從戀愛、自我到個人品牌，<br>陪你把主導權拿回來</h1>
+      <p class="subtitle">YouTuber &nbsp;·&nbsp; 行銷顧問 &nbsp;·&nbsp; 個人品牌變現陪跑</p>
+
+      <div class="cta-group">
+        <a class="btn-primary" href="https://www.instagram.com/annalo831028/" target="_blank" rel="noopener">
+          📷&nbsp;追蹤 IG
+        </a>
+        <a class="btn-secondary" href="https://www.youtube.com/@AnnaLo1028" target="_blank" rel="noopener">
+          ▶&nbsp;訂閱 YT 頻道
+        </a>
+        <a class="btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSefT9521T_gQHLOHr6VIcd0vhFf1q39JMtaUPKbnzD7EVTBIA/viewform" target="_blank">
+          ✦&nbsp;諮詢個人品牌陪跑
+        </a>
+      </div>
+
+      <div class="countdown-wrapper">
+        <div class="countdown-label">超有安全感、小胸也能性感的深V貼 · 團購截止</div>
+        <div id="countdown-big" data-deadline="2026-05-12T23:59:00+08:00" data-onzero="ended-state">
+          <div class="unit"><span class="num" data-unit="days">00</span><span class="label">天</span></div>
+          <div class="unit"><span class="num" data-unit="hours">00</span><span class="label">時</span></div>
+          <div class="unit"><span class="num" data-unit="mins">00</span><span class="label">分</span></div>
+          <div class="unit"><span class="num" data-unit="secs">00</span><span class="label">秒</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 近期團購（移到影片上方） -->
+  <section id="groupbuys">
+    <div class="container">
+      <h2 class="section-heading">近期團購</h2>
+      <div class="section-divider"></div>
+      <div class="groupbuy-list">
+        <div class="groupbuy-card" style="opacity:0.5;">
+          <div class="groupbuy-left">
+            <span class="groupbuy-badge badge-ended">已結束</span>
+            <span class="groupbuy-name">玻尿酸保濕精華</span>
+          </div>
+          <span class="groupbuy-dates">4/22–4/29</span>
+        </div>
+        <a class="groupbuy-card active" href="https://anna.plika.fun/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <div class="groupbuy-left">
+            <span class="groupbuy-badge badge-active">進行中</span>
+            <span class="groupbuy-name">夏天必備！小胸也性感的安心深V貼🫦</span>
+          </div>
+          <span class="groupbuy-dates">5/5–5/12 →</span>
+        </a>
+        <div class="groupbuy-card">
+          <div class="groupbuy-left">
+            <span class="groupbuy-badge badge-upcoming">即將開始</span>
+            <span class="groupbuy-name">快閃體香噴霧</span>
+          </div>
+          <span class="groupbuy-dates">5/22–5/23</span>
+        </div>
+      </div>
+      <p class="groupbuy-note">
+        購買連結公告在 <a href="https://www.instagram.com/annalo831028/" target="_blank" rel="noopener">IG 限時動態</a>，先追蹤不漏接
+      </p>
+    </div>
+  </section>
+
+  <!-- 最新影片（縮圖點擊跳 YT） -->
+  <section id="videos">
+    <div class="container">
+      <h2 class="section-heading">最新影片</h2>
+      <div class="section-divider"></div>
+      <div class="video-list">
+        <a class="video-card" href="https://youtu.be/iE2P_dzxFis" target="_blank" rel="noopener">
+          <img class="video-thumb" src="https://img.youtube.com/vi/iE2P_dzxFis/maxresdefault.jpg" alt="Anna 欸娜影片" loading="lazy">
+          <div class="video-play">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </a>
+        <a class="video-card" href="https://youtu.be/voNLsl2heUw" target="_blank" rel="noopener">
+          <img class="video-thumb" src="https://img.youtube.com/vi/voNLsl2heUw/maxresdefault.jpg" alt="Anna 欸娜影片" loading="lazy">
+          <div class="video-play">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </a>
+        <a class="video-card" href="https://youtu.be/URkq9Mn2oRw" target="_blank" rel="noopener">
+          <img class="video-thumb" src="https://img.youtube.com/vi/URkq9Mn2oRw/maxresdefault.jpg" alt="Anna 欸娜影片" loading="lazy">
+          <div class="video-play">
+            <div class="play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div style="text-align:center; margin-top:1.25rem;">
+        <a class="btn-secondary" href="https://www.youtube.com/@AnnaLo1028" target="_blank" rel="noopener" style="display:inline-flex; width:auto;">看更多影片 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 個人品牌陪跑 -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-heading">個人品牌陪跑</h2>
+      <div class="section-divider"></div>
+      <div class="service-card">
+        <div class="service-title">✦ 個人品牌變現陪跑計劃</div>
+        <p class="service-desc">把個人品牌從 0 做起，搭配一套我實際在運作的變現系統。不需要爆紅，不靠運氣，有興趣就來聊聊。</p>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSefT9521T_gQHLOHr6VIcd0vhFf1q39JMtaUPKbnzD7EVTBIA/viewform" target="_blank" style="width:auto; display:inline-flex;">歡迎詢問</a>
+      </div>
+      <div style="margin-top:0.75rem; padding:0.9rem 1.1rem; background:var(--bg); border-radius:10px; border:1px dashed var(--muted); font-size:0.75rem; color:var(--muted); font-family:'Noto Sans TC',sans-serif;">
+        📖 <strong style="color:var(--text); font-family:'Noto Serif TC',serif; font-weight:700;">個人品牌迷你課程</strong>｜籌備中，想搶先知道？<a href="https://www.instagram.com/annalo831028/" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">追蹤 IG 不漏接 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 廠商合作 -->
+  <section id="collab">
+    <div class="container">
+      <h2 class="section-heading">廠商合作邀約</h2>
+      <div class="section-divider"></div>
+      <div class="collab-box">
+        <p>歡迎品牌合作、團購邀約、置入、聯名企劃</p>
+        <a class="btn-primary" href="mailto:annawork1028@gmail.com" style="display:inline-flex; width:auto;">
+          ✉&nbsp;annawork1028@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於我（移到最下面） -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-heading">關於我</h2>
+      <div class="section-divider"></div>
+      <p>我是 Anna，一個從迷茫走到現在的人。很多你卡住的地方，我可能也走過。</p>
+      <p>現在，我陪你把很多原本看不清的事情慢慢想明白——不管是感情、自我認識，還是怎麼把自己經營成一個有價值的個人品牌。</p>
+    </div>
+  </section>
+
+  <!-- Sticky countdown -->
+  <div id="countdown-sticky" data-deadline="2026-05-12T23:59:00+08:00" data-onzero="ended-state">
+    <div class="sticky-text">
+      <span class="sticky-label">深V貼 團購截止</span>
+      剩 <strong class="time"></strong>
+    </div>
+    <a class="cta-compact" href="https://forms.gle/oUnpEmi2aK6jPeH48" target="_blank" rel="noopener">
+      立刻下單 →
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Anna 欸娜 &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/annalo831028/" target="_blank" rel="noopener">@annalo831028</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:annawork1028@gmail.com">合作洽談</a>
+    </p>
+  </footer>
+
+  <!-- Nav scroll -->
+  <script>
+    (function() {
+      var nav = document.getElementById('siteNav');
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Countdown -->
+  <script>
+    (function () {
+      'use strict';
+      var bigEl    = document.getElementById('countdown-big');
+      var stickyEl = document.getElementById('countdown-sticky');
+      var heroEl   = document.getElementById('hero');
+      if (!bigEl && !stickyEl) return;
+      var deadlineStr = (bigEl || stickyEl).getAttribute('data-deadline');
+      var onZero      = (bigEl || stickyEl).getAttribute('data-onzero') || 'ended-state';
+      var deadline    = new Date(deadlineStr).getTime();
+      if (isNaN(deadline)) return;
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var diff = deadline - Date.now();
+        if (diff <= 0) { handleZero(); return false; }
+        var days  = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var mins  = Math.floor((diff % 3600000) / 60000);
+        var secs  = Math.floor((diff % 60000) / 1000);
+        if (bigEl) {
+          var map = { days: days, hours: hours, mins: mins, secs: secs };
+          bigEl.querySelectorAll('[data-unit]').forEach(function(el) {
+            el.textContent = pad(map[el.dataset.unit] || 0);
+          });
+        }
+        if (stickyEl) {
+          var t = stickyEl.querySelector('.time');
+          if (t) t.textContent = days + '天 ' + pad(hours) + ':' + pad(mins) + ':' + pad(secs);
+        }
+        return true;
+      }
+      function handleZero() {
+        if (bigEl) {
+          var w = bigEl.closest('.countdown-wrapper');
+          if (w) w.innerHTML = '<div style="padding:0.5rem 0;opacity:0.6;font-size:0.85rem;">本次活動已結束</div>';
+        }
+        if (stickyEl) {
+          stickyEl.innerHTML = '<span style="width:100%;text-align:center;font-size:0.82rem;">本次活動已結束</span>';
+          stickyEl.classList.add('visible');
+        }
+      }
+      if (heroEl && stickyEl) {
+        new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) { stickyEl.classList.toggle('visible', !e.isIntersecting); });
+        }, { threshold: 0 }).observe(heroEl);
+      }
+      if (tick()) setInterval(function() { if (!tick()) clearInterval(); }, 1000);
+    })();
+  </script>
+
+</body>
+</html>
